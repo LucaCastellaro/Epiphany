@@ -37,7 +37,14 @@
 		font-weight: 300;
 		color: #5d5d5d;
 	}
-
+	li input[type="text"]{
+		border:none;
+		border-bottom: 1px solid #d52349;
+		outline:none;
+	}
+	li input[type="button"]{
+		padding: 0px 10px 0px 10px;
+	}
 	strong, b
 	{
 		color: #252122;

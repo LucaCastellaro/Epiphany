@@ -8,6 +8,7 @@
 	<head>
 		<title>Epiphany</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'> <!--Font per il logo Epiphany-->
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
@@ -36,7 +37,7 @@
 						<nav id="nav">
 							<ul>
 								<li class="current"><a href="index.html">Home</a></li>
-								<li>
+<!--								<li>
 									<a href="">Categorie</a>
 									<ul>
 										<li><a href="#">Lorem ipsum dolor</a></li>
@@ -55,11 +56,13 @@
 										<li><a href="#">Veroeros feugiat</a></li>
 									</ul>
 								</li>
-								<li><a href="left-sidebar.html">Esplora</a></li>
-                                                                <li><input type="text" name="cerca" id="cerca" placeholder="Cerca"> <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"></li>
-                                                      		<li><a href="right-sidebar.html">Crea</a></li>
-                                                      		<li><a href="right-sidebar.html">Registrati</a></li>
-                                                      		<li><a href="right-sidebar.html">Login</a></li>
+-->								<li><a href="left-sidebar.html">Esplora</a></li>
+                                                                <li><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea"> <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"></li>
+<!--                                                      		<li><a href="right-sidebar.html">Crea</a></li>				
+							
+                            				COMMENTO IMPORTANTE: il pulsante "crea" pulsante facciamolo "vedere" solo se è già stato fatto il login (:
+                                            
+-->                                                      	<li><a href="right-sidebar.html">Registrazione / Login</a></li>
                                                                
 							</ul>
 						</nav>
@@ -82,7 +85,7 @@
 										<header>
 											<h2>Hai un Idea?</h2>
 										</header>
-										<p>Ti è venuta in mente un idea geniale e non sai come svilupparla? Sei nel posto giusto.</p>
+										<p>Ti è venuta in mente un idea geniale e non <br>sai come svilupparla? Sei nel posto giusto.</p>
 									</section>
 								</div>
 								<div class="4u">
@@ -92,7 +95,7 @@
 										<header>
 											<h2>Elabora la tua Idea</h2>
 										</header>
-										<p>Compila il form per inserire la tua Idea, cerca di descriverla nel modo migliore possibile.</p>
+										<p>Compila il form per inserire la tua idea, cerca <br>di descriverla nel modo migliore possibile.</p>
 									</section>
 								</div>
 								<div class="4u">
@@ -101,7 +104,7 @@
 										<header>
 											<h2>Cerca un Idea</h2>
 										</header>
-										<p>Non hai un idea, ma pensi di poter risolvere il problema di qualcuno? Fai un giro tra nostre idee.</p>
+										<p>Non hai un idea ma pensi di poter risolvere <br>il problema di qualcuno? Esplora le idee.</p>
 									</section>
 								</div>
 							</div>
@@ -230,7 +233,7 @@
 						<div class="12u">
 
 							<!-- Blog -->
-								<section>
+<!--								<section>
 									<header class="major">
 										<h2>The Blog</h2>
 									</header>
@@ -269,7 +272,7 @@
 										</div>
 									</div>
 								</section>
-							
+-->							
 						</div>
 					</div>
 				</div>
