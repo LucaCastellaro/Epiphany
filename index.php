@@ -71,7 +71,7 @@
 						<section id="banner">
 							<header>
 								<h2>Benvenuto. Questo è Epiphany</h2> <!--Howdy. This is Epiphany.-->
-								<p>Metti un idea, trova una soluzione a un problema</p>
+								<p>Metti un idea, trova una soluzione</p>
 							</header>
 						</section>
 
