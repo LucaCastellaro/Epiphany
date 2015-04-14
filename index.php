@@ -57,7 +57,7 @@
 									</ul>
 								</li>
 -->								<li><a href="left-sidebar.html">Esplora</a></li>
-                                                                <li><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea"> <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"></li>
+<li id="li-cerca"><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea"> <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"></li>
 <!--                                                      		<li><a href="right-sidebar.html">Crea</a></li>				
 							
                             				COMMENTO IMPORTANTE: il pulsante "crea" pulsante facciamolo "vedere" solo se è già stato fatto il login (:
