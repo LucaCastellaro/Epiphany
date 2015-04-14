@@ -31,12 +31,12 @@
 				<div id="header">
 					
 					<!-- Logo -->
-						<h1><a href="index.html">Epiphany</a></h1>
+						<h1><a href="">Epiphany</a></h1>
 					
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li class="current"><a href="index.html">Home</a></li>
+								<li class="current"><a href="">Home</a></li>
 <!--								<li>
 									<a href="">Categorie</a>
 									<ul>
@@ -57,7 +57,7 @@
 									</ul>
 								</li>
 -->								<li><a href="left-sidebar.html">Esplora</a></li>
-<li id="li-cerca"><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea"> <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"></li>
+<li id="li-cerca"><a href=""><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea"> <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"></a></li>
 <!--                                                      		<li><a href="right-sidebar.html">Crea</a></li>				
 							
                             				COMMENTO IMPORTANTE: il pulsante "crea" pulsante facciamolo "vedere" solo se è già stato fatto il login (:
@@ -110,8 +110,8 @@
 							</div>
 							<footer>
 								<ul class="actions">
-									<li><a href="#" class="button big"><!--Get Started-->Inizia</a></li>
-									<li><a href="#" class="button alt big">Esplora</a></li>
+									<li><a href="" class="button big"><!--Get Started-->Inizia</a></li>
+									<li><a href="" class="button alt big">Esplora</a></li>
 								</ul>
 							</footer>
 						</section>
@@ -319,16 +319,16 @@
 						<div class="4u">
 							<section>
 								<header>
-									<h2>What's this all about?</h2>
+									<h2>Informazioni</h2>
 								</header>
 								<a href="#" class="image featured"><img src="images/pic10.jpg" alt="" /></a>
 								<p>
-									This is <strong>Dopetrope</strong> a free, fully responsive HTML5 site template by 
-									<a href="http://n33.co">AJ</a> for <a href="http://html5up.net/">HTML5 UP</a> It's released for free under
-									the <a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for any personal or commercial project &ndash; just don't forget to credit us!
+									<p>Questo &egrave; <strong>Epiphany</strong>.</p>
+									<p>Hai una nuova idea innovativa ma non sai come realizzarla?<br>Inseriscila nel nostro database e aspetta che qualcun altro ti aiuti!</p>
+									<p>Hai delle grandi abilit&agrave; ma al momento non sai come usarle?<br>Cerca un'idea e aiuta qualcuno a risolvere un problema!</p>
 								</p>
 								<footer>
-									<a href="#" class="button">Find out more</a>
+									<a href="" class="button">Leggi altro su Epiphany</a>
 								</footer>
 							</section>
 						</div>
@@ -404,7 +404,7 @@
 							<!-- Copyright -->
 								<div id="copyright">
 									<ul class="links">
-										<li>&copy; 2015 - Epiphany. All rights reserved.</li><li>Powered by <a href="#">Luca Castellaro</a>, <a href="#">Matteo Bosi</a></li>
+										<li>&copy; 2015 - Epiphany. All rights reserved.</li><li>Powered by <a href="lucacastellaro.altervista.org">Luca Castellaro</a>, <a href="#">Matteo Bosi</a></li>
 									</ul>
 								</div>
 
