@@ -36,16 +36,23 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="index.php">Home</a></li>
-<!--								<li>
+								<li class="current"><a href="index.php">Home</a></li>
+								<li>
 									<a href="">Categorie</a>
 									<ul>
-										<li><a href="#">Lorem ipsum dolor</a></li>
+                                    	<?php
+                                        	$f=fopen("categorie.txt","r");
+												while($riga=fgets($f))
+												{
+													echo "<li><a href=\"#\">".$riga."</a></li>";
+												}
+												?>
+										<!--li><a href="#">Lorem ipsum dolor</a></li>
 										<li><a href="#">Magna phasellus</a></li>
 										<li><a href="#">Etiam dolore nisl</a></li>
 										<li>
 											<a href="">Phasellus consequat</a>
-											<ul>
+											<!--<ul>
 												<li><a href="#">Magna phasellus</a></li>
 												<li><a href="#">Etiam dolore nisl</a></li>
 												<li><a href="#">Veroeros feugiat</a></li>
@@ -53,11 +60,11 @@
 												<li><a href="#">Dolore adipiscing</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Veroeros feugiat</a></li>
+										<li><a href="#">Veroeros feugiat</a></li-->
 									</ul>
 								</li>
--->								<li><a href="left-sidebar.html">Esplora</a></li>
-<li id="li-cerca"><a href=""><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea"> <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"></a></li>
+							<li><a href="left-sidebar.html">Esplora</a></li>
+<!--li id="li-cerca"><a href=""><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea"> <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"></a></li-->
 <!--                                                      		<li><a href="right-sidebar.html">Crea</a></li>				
 							
                             				COMMENTO IMPORTANTE: il pulsante "crea" pulsante facciamolo "vedere" solo se è già stato fatto il login (:
@@ -65,7 +72,15 @@
 -->                                                      	<li class="current"><a href="">Registrazione / Login</a></li>
                                                                
 							</ul>
-						</nav>				
+						</nav>
+                         <section>
+							<header>
+								<div id="box-cerca"><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea">
+                                <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca">
+                                </div>
+							</header>
+						</section>
+				
 				</div>
 			</div>
 		
@@ -82,50 +97,20 @@
 										<h2>Registrati</h2>
 										<p>Compila il form per poterti registrare al nostro portale</p>
 									</header>
-									<p>
-										Vestibulum scelerisque ultricies libero id hendrerit. Vivamus malesuada quam faucibus ante dignissim auctor 
-										hendrerit libero placerat. Nulla facilisi. Proin aliquam felis non arcu molestie at accumsan turpis commodo. 
-										Proin elementum, nibh non egestas sodales, augue quam aliquet est, id egestas diam justo adipiscing ante. 
-										Pellentesque tempus nulla non urna eleifend ut ultrices nisi faucibus.
-									</p>
-									<p>
-										Praesent a dolor leo. Duis in felis in tortor lobortis volutpat et pretium tellus. Vestibulum ac ante nisl, 
-										a elementum odio. Duis semper risus et lectus commodo fringilla. Maecenas sagittis convallis justo vel mattis. 
-										placerat, nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc, 
-										eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean 
-										elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-										sit amet nullam consequat feugiat dolore tempus.
-									</p>
-									<section>
-										<header>
-											<h3>Something else</h3>
-										</header>
-										<p>
-											Elementum odio duis semper risus et lectus commodo fringilla. Maecenas sagittis convallis justo vel mattis. 
-											placerat, nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc, 
-											eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean 
-											elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-											sit amet nullam consequat feugiat dolore tempus.
-										</p>
-										<p>
-											Nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc, 
-											eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean 
-											elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-											sit amet nullam consequat feugiat dolore tempus.
-										</p>
-									</section>
-									<section>
-										<header>
-											<h3>So in conclusion ...</h3>
-										</header>
-										<p>
-											Nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc, 
-											eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean 
-											elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-											sit amet nullam consequat feugiat dolore tempus. Elementum odio duis semper risus et lectus commodo fringilla. 
-											Maecenas sagittis convallis justo vel mattis. 
-										</p>
-									</section>
+                                    <section>
+                                    	<form id="reg_form" name="reg_form" method="post" action="">
+                                        	<label id="label-reg_nome">Nome: </label><input type="text" name="reg_nome" id="reg_nome" placeholder="Nome">
+                                            <label id="label-reg_cognome">Cognome: </label><input type="text" name="reg_cognome" id="reg_cognome" placeholder="Cognome">
+                                        	<label id="label-reg_mail">Email: </label><input type="text" name="reg_mail" id="reg_mail" placeholder="Inserisci un indirizzo email valido">
+                                            <label id="label-reg_telefono">Telefono: </label><input type="text" name="reg_tel" id="reg_tel" placeholder="Telefono">
+                                        	<label id="label-reg_citta">Citta: </label><input type="text" name="reg_citta" id="reg_citta" placeholder="Citta">
+                                            <label id="label-reg_provincia">Provincia: </label><input type="text" name="reg_provincia" id="reg_provincia" placeholder="Provincia">
+                                            <label id="label-reg_cap">Provincia: </label><input type="text" name="reg_cap" id="reg_cap" placeholder="Cap">
+
+                                            <br>
+                                            <input type="button" name="bt-reg_form" id="bt-reg_form" value="Registrati">                                            
+                                        </form>
+                                    </section>
 								</article>
 
 						</div>
@@ -138,7 +123,7 @@
 										<h3>Login</h3>
 									</header>
 									<p>
-                                    	<form name="form-login" id="form_login" method="post" action="">
+                                    	<form name="form_login" id="form_login" method="post" action="">
 	                                    	<input type="text" name="user_login" id="user_login" placeholder="Nome Utente"><br>
 	                                    	<input type="password" name="password_login" id="password_login" placeholder="Password">
                                     </p>

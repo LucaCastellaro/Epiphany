@@ -37,15 +37,22 @@
 						<nav id="nav">
 							<ul>
 								<li class="current"><a href="">Home</a></li>
-<!--								<li>
+								<li>
 									<a href="">Categorie</a>
 									<ul>
-										<li><a href="#">Lorem ipsum dolor</a></li>
+                                    	<?php
+                                        	$f=fopen("categorie.txt","r");
+												while($riga=fgets($f))
+												{
+													echo "<li><a href=\"#\">".$riga."</a></li>";
+												}
+												?>
+										<!--li><a href="#">Lorem ipsum dolor</a></li>
 										<li><a href="#">Magna phasellus</a></li>
 										<li><a href="#">Etiam dolore nisl</a></li>
 										<li>
 											<a href="">Phasellus consequat</a>
-											<ul>
+											<!--<ul>
 												<li><a href="#">Magna phasellus</a></li>
 												<li><a href="#">Etiam dolore nisl</a></li>
 												<li><a href="#">Veroeros feugiat</a></li>
@@ -53,11 +60,11 @@
 												<li><a href="#">Dolore adipiscing</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Veroeros feugiat</a></li>
+										<li><a href="#">Veroeros feugiat</a></li-->
 									</ul>
 								</li>
--->								<li><a href="left-sidebar.html">Esplora</a></li>
-<li id="li-cerca"><a href=""><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea"> <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"></a></li>
+							<li><a href="left-sidebar.html">Esplora</a></li>
+<!--li id="li-cerca"><a href=""><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea"> <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"></a></li-->
 <!--                                                      		<li><a href="right-sidebar.html">Crea</a></li>				
 							
                             				COMMENTO IMPORTANTE: il pulsante "crea" pulsante facciamolo "vedere" solo se è già stato fatto il login (:
@@ -66,7 +73,14 @@
                                                                
 							</ul>
 						</nav>
-
+                        <!---->
+                        <section>
+							<header>
+								<div id="box-cerca"><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea">
+                                <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca">
+                                </div>
+							</header>
+						</section>
 					<!-- Banner -->
 						<section id="banner">
 							<header>
@@ -74,7 +88,6 @@
 								<p>Metti un idea, trova una soluzione</p>
 							</header>
 						</section>
-
 					<!-- Intro -->
 						<section id="intro" class="container">
 							<div class="row">

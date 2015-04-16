@@ -37,13 +37,16 @@
 		font-weight: 300;
 		color: #5d5d5d;
 	}
-	#li-cerca input[type="text"]{
+	#box-cerca input[type="text"]{
 		border:none;
 		border-bottom: 1px solid #d52349;
 		outline:none;
 	}
-	#li-cerca input[type="button"]{
-		padding: 0px 10px 0px 10px;
+	#box-cerca input[type="button"]{
+		padding: 0 0.5em 0 0.5em;
+	}
+	#box-cerca{
+		padding-top:1em;
 	}
 	strong, b
 	{
@@ -264,14 +267,14 @@
 		header
 		{
 		}
-                        #header h1
-                        {
-                                color: #d52349;
-                                font-family:'Sacramento';
-                                font-weight: 900;
-                                font-size: 3em;
-                                margin: 0 0 1em 0;
-                        }
+			#header h1
+			{
+					color: #d52349;
+					font-family:'Sacramento';
+					font-weight: 900;
+					font-size: 3em;
+					margin: 0 0 1em 0;
+			}
 			header > p
 			{
 				display: block;
@@ -862,3 +865,73 @@
 			border-radius: 5px;
 			margin: 0;
 		}
+
+/****************************************************/
+/*CATEGORIE FOOTER*/
+/****************************************************/
+ul.categories
+			{
+			}
+			
+				ul.categories li
+				{
+					position: relative;
+					border-top: solid 1px #ddd;
+					padding: 0;
+					display:inline;
+				}
+
+				ul.categories .categ
+				{
+					display: block;
+					position: absolute;
+					left: 0;
+					top: 1.3em;
+					background-color: #d52349;
+					height: 3.5em;
+					text-align: center;
+					color: #fff;
+					line-height: 1em;
+					border-top-left-radius: 5px;
+					border-bottom-left-radius: 5px;
+					padding: 0.5em 0.75em 0 1em;
+				}
+
+					ul.categories .categ:after
+					{
+						content: '';
+						position: absolute;
+						bottom: 0;
+						right: -1.2em;
+						border-left: solid 1.25em #d52349;
+						border-top: solid 1.8em transparent;
+						border-bottom: solid 1.8em transparent;
+					}
+				
+					ul.categories .categ strong
+					{
+						display: block;
+						font-size: 1.75em;
+						padding-top: 0.15em;
+					}
+					
+				ul.categories h3
+				{
+					font-size: 1.1em;
+				}
+					
+				ul.categories p
+				{
+					margin: 0;
+				}
+
+				ul.categories li:first-child
+				{
+					border-top: 0;
+					padding-top: 0;
+				}
+				
+					ul.categories li:first-child .categ
+					{
+						top: 0;
+					}
