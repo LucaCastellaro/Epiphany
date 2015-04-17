@@ -17,12 +17,144 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
+        <link rel="stylesheet" href="captcha/css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="captcha/css/main.css">
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-desktop.css" />
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+        <script>
+		$(document).ready(function(){
+			$("#refresh-captcha").click(function(){
+			$("#captcha").attr("src","captcha/php/newCaptcha.php?rnd=" + Math.random());
+			});
+			
+			/*CheckForm Registrazione*/
+			$("#bt_avanti-reg_form").click(function(){
+				var nameReg = /^[A-Za-z]+$/;
+				var numberReg =  /^[0-9]+$/;
+				var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+		
+				var nome = $('#reg_nome').val();
+				var cognome = $('#reg_cognome').val();
+				var email = $('#reg_mail').val();
+				var telefono = $('#reg_tel').val();
+				var indirizzo = $('#reg_indirizzo').val();
+				var cf =$('#reg_cf').val();
+				/*var citta = $('#citta').val();
+				var cap = $('#cap').val();
+				var tipo = document.form.tipo.value;*/
+				var error = "";
+				$('.error').hide();
+				if(nome == ""){
+					$('#reg_nome').css("border", "2px solid red");
+					error +="nome";
+				} 
+				else if(!nameReg.test(nome)){
+					$('#reg_nome_err').remove();
+					$('#reg_nome').after('<span class="error" id="reg_nome_err"><br>Inserire solo lettere</span>');
+					$('#reg_nome').css("border", "2px solid red");
+						error +="nome";
+				}else{
+					$('#reg_nome').css("border", "2px inset");
+				}
+				if(cognome == ""){
+					$('#reg_cognome').css("border", "2px solid red");
+					error +="cognome";
+				} 
+				else if(!nameReg.test(cognome)){
+					$('#reg_cognome_err').remove();
+					$('#reg_cognome').after('<span class="error" id="reg_cogmome_err"><br>Inserire solo lettere</span>');
+					$('#reg_cognome').css("border", "2px solid red");
+					error +="cognome";
+				}else{
+					$('#reg_cognome').css("border", "2px inset");
+				}
+				if(email == ""){
+					$('#reg_mail').css("border", "2px solid red");
+					error +="mail";
+				} 
+				else if(!emailReg.test(email)){
+					$('#reg_mail_err').remove();
+					$('#reg_mail').after('<span class="error" id="reg_mail_err"><br>Inserire indirizzo email valido</span>');
+					$('#reg_mail').css("border", "2px solid red");
+					error +="mail";
+				}else{
+					$('#reg_mail').css("border", "2px inset");
+				}
+				if(cf == ""){
+						$('#reg_cf').css("border", "2px solid red");
+						error +="cf";
+					}else if(cf.length!=16&&(cf.length!=11||!numberReg.test(cf))){
+						$('#reg_cf_err').remove();
+						$('#reg_cf').after('<span class="error" id="reg_cf_err"><br>Inserire 16 caratteri</span>');
+						$('#reg_cf').css("border", "2px solid red");
+						error +="cf";
+					}else{
+						$('#reg_cf').css("border", "2px inset");
+					}
+				if(telefono == ""){
+					$('#reg_tel').css("border", "2px solid red");
+					error +="reg_tel";
+				} 
+				else if(!numberReg.test(telefono)){
+					$('#reg_tel_err').remove();
+					$('#reg_tel').after('<span class="error" id="reg_tel_err"><br>Inserire solo numeri</span>');
+					$('#reg_tel').css("border", "2px solid red");
+					error +="telefono";
+				}else{
+					$('#reg_tel').css("border", "2px inset");
+				}
+				if(indirizzo == ""){
+					$('#reg_indirizzo').css("border", "2px solid red");
+					error +="indirizzo";
+				}else{
+					$('#reg_indirizzo').css("border", "2px inset");
+				}
+				/*if(citta == ""){
+						$('#citta').css("border", "2px solid red");
+						error +="citta";
+					}else{
+						$('#citta').css("border", "2px inset");
+					}
+				if(cap == ""){
+						$('#cap').css("border", "2px solid red");
+						error +="cap";
+					}else{
+						$('#cap').css("border", "2px inset");
+					}
+				*/
+				if(error.length==0){
+					//alert("ok");
+					/*se non ci sono errori di compilazione nel form controlla il captcha*/
+					$.post('captcha/php/checkCaptcha.php',
+					{code: $("#captcha-field").val()},function(ok){
+					//alert(ok);
+							if(ok.trim()=='true'){
+								alert("captcha correto");
+								/*submit form*/
+							}
+							if(ok.trim()=='false'){
+								alert("captcha errato");
+							}
+		
+					});
+				}
+			});	
+	/**************************/		
+		});
+		/*scrivi in automati in maiuscolo nei campi*/
+		function makeUppercase(input) {
+			if ( event.which == 13 ) {
+				var inputs = $("#form").find(':focusable');
+				inputs.eq(inputs.index(input) + 1).focus();
+			} else
+				input.value = input.value.toUpperCase();
+			}
+
+        </script>
 	</head>
 	<body class="homepage">
 
@@ -99,16 +231,18 @@
 									</header>
                                     <section>
                                     	<form id="reg_form" name="reg_form" method="post" action="">
-                                        	<label id="label-reg_nome">Nome: </label><input type="text" name="reg_nome" id="reg_nome" placeholder="Nome">
-                                            <label id="label-reg_cognome">Cognome: </label><input type="text" name="reg_cognome" id="reg_cognome" placeholder="Cognome">
-                                        	<label id="label-reg_mail">Email: </label><input type="text" name="reg_mail" id="reg_mail" placeholder="Inserisci un indirizzo email valido">
-                                            <label id="label-reg_telefono">Telefono: </label><input type="text" name="reg_tel" id="reg_tel" placeholder="Telefono">
-                                        	<label id="label-reg_citta">Citta: </label><input type="text" name="reg_citta" id="reg_citta" placeholder="Citta">
-                                            <label id="label-reg_provincia">Provincia: </label><input type="text" name="reg_provincia" id="reg_provincia" placeholder="Provincia">
-                                            <label id="label-reg_cap">Provincia: </label><input type="text" name="reg_cap" id="reg_cap" placeholder="Cap">
-
+                                        	<label id="label-reg_nome">Nome: </label><input type="text" name="reg_nome" id="reg_nome" onKeyUp="makeUppercase(this);" placeholder="Nome">
+                                            <label id="label-reg_cognome">Cognome: </label><input type="text" name="reg_cognome" id="reg_cognome" onKeyUp="makeUppercase(this);" placeholder="Cognome">
+                                        	<label id="label-reg_mail">Email: </label><input type="text" name="reg_mail" id="reg_mail" onKeyUp="makeUppercase(this);" placeholder="Email">
+                                            <label id="label-reg_cf">Codice Fiscale: </label><input type="text" name="reg_cf" id="reg_cf" onKeyUp="makeUppercase(this);" placeholder="Codice Fiscale">
+                                            <label id="label-reg_telefono">Telefono: </label><input type="text" name="reg_tel" id="reg_tel" onKeyUp="makeUppercase(this);" placeholder="Telefono">
+                                            <label id="label-reg_indirizzo">Indirizzo: </label><input type="text" name="reg_indirizzo" id="reg_indirizzo" onKeyUp="makeUppercase(this);" placeholder="Indirizzo">
+                                        	<label id="label-reg_citta">Citta: </label><input type="text" name="reg_citta" id="reg_citta" onKeyUp="makeUppercase(this);" placeholder="Citta">
+                                            <label id="label-reg_cap">Cap: </label><input type="text" name="reg_cap" id="reg_cap" onKeyUp="makeUppercase(this);" placeholder="Cap">
+                                            <img src="captcha/php/newCaptcha.php" alt="" id="captcha" /><img src="captcha/img/refresh.jpg" alt="aggiorna captcha" id="refresh-captcha" />
+											<label id="label-reg_captcha">Verifica Captcha:<input name="captcha-field" type="text" id="captcha-field" size="35" maxlength="5" value=""onKeyUp="makeUppercase(this);">
                                             <br>
-                                            <input type="button" name="bt-reg_form" id="bt-reg_form" value="Registrati">                                            
+                                            <input type="button" name="bt_avanti-reg_form" id="bt_avanti-reg_form" value="Registrati">                                            
                                         </form>
                                     </section>
 								</article>
