@@ -19,6 +19,9 @@
 		<script src="js/init.js"></script>
         <link rel="stylesheet" href="captcha/css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="captcha/css/main.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -43,9 +46,8 @@
 				var telefono = $('#reg_tel').val();
 				var indirizzo = $('#reg_indirizzo').val();
 				var cf =$('#reg_cf').val();
-				/*var citta = $('#citta').val();
-				var cap = $('#cap').val();
-				var tipo = document.form.tipo.value;*/
+				var citta = $('#reg_citta').val();
+				var cap = $('#reg_cap').val();
 				var error = "";
 				$('.error').hide();
 				if(nome == ""){
@@ -113,19 +115,19 @@
 				}else{
 					$('#reg_indirizzo').css("border", "2px inset");
 				}
-				/*if(citta == ""){
-						$('#citta').css("border", "2px solid red");
+				if(citta == ""){
+						$('#reg_citta').css("border", "2px solid red");
 						error +="citta";
 					}else{
-						$('#citta').css("border", "2px inset");
+						$('#reg_citta').css("border", "2px inset");
 					}
 				if(cap == ""){
-						$('#cap').css("border", "2px solid red");
+						$('#reg_cap').css("border", "2px solid red");
 						error +="cap";
 					}else{
-						$('#cap').css("border", "2px inset");
+						$('#reg_cap').css("border", "2px inset");
 					}
-				*/
+				
 				if(error.length==0){
 					//alert("ok");
 					/*se non ci sono errori di compilazione nel form controlla il captcha*/
@@ -143,6 +145,23 @@
 					});
 				}
 			});	
+				$( "#reg_citta" ).autocomplete({
+	    source: "searchComuni.php",
+	    minLength: 3,
+	    delay:200,
+	    focus: function( event, ui ) {
+	        $( "#reg_citta" ).val( ui.item.label );
+	        return false;
+	      },
+	    select: function( event, ui ) {
+	    	//console.debug(ui.item.value);
+	    	$("#reg_citta").val(ui.item.label);
+	    	$("#reg_idCitta").val(ui.item.value);
+	    	$("#reg_cap").val(ui.item.cap);
+	  		return false;
+	    }
+	  });
+
 	/**************************/		
 		});
 		/*scrivi in automati in maiuscolo nei campi*/
@@ -241,6 +260,7 @@
                                             <label id="label-reg_cap">Cap: </label><input type="text" name="reg_cap" id="reg_cap" onKeyUp="makeUppercase(this);" placeholder="Cap">
                                             <img src="captcha/php/newCaptcha.php" alt="" id="captcha" /><img src="captcha/img/refresh.jpg" alt="aggiorna captcha" id="refresh-captcha" />
 											<label id="label-reg_captcha">Verifica Captcha:<input name="captcha-field" type="text" id="captcha-field" size="35" maxlength="5" value=""onKeyUp="makeUppercase(this);">
+                                            <input type="hidden" id="reg_idCitta" name="reg_idCitta" value="" />
                                             <br>
                                             <input type="button" name="bt_avanti-reg_form" id="bt_avanti-reg_form" value="Registrati">                                            
                                         </form>
