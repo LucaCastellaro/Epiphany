@@ -43,7 +43,7 @@
 		
 				var nome = $('#reg_nome').val();
 				var cognome = $('#reg_cognome').val();
-				var email = $('#reg_mail').val();
+				var email = $('#reg_email').val();
 				var telefono = $('#reg_tel').val();
 				var indirizzo = $('#reg_indirizzo').val();
 				var cf =$('#reg_cf').val();
@@ -76,16 +76,16 @@
 					$('#reg_cognome').css("border", "2px inset");
 				}
 				if(email == ""){
-					$('#reg_mail').css("border", "2px solid red");
-					error +="mail";
+					$('#reg_email').css("border", "2px solid red");
+					error +="email";
 				} 
 				else if(!emailReg.test(email)){
-					$('#reg_mail_err').remove();
-					$('#reg_mail').after('<span class="error" id="reg_mail_err"><br>Inserire indirizzo email valido</span>');
-					$('#reg_mail').css("border", "2px solid red");
-					error +="mail";
+					$('#reg_email_err').remove();
+					$('#reg_email').after('<span class="error" id="reg_email_err"><br>Inserire indirizzo email valido</span>');
+					$('#reg_email').css("border", "2px solid red");
+					error +="email";
 				}else{
-					$('#reg_mail').css("border", "2px inset");
+					$('#reg_email').css("border", "2px inset");
 				}
 				if(cf == ""){
 						$('#reg_cf').css("border", "2px solid red");
@@ -130,20 +130,23 @@
 					}
 				
 				if(error.length==0){
-					//alert("ok");
-					/*se non ci sono errori di compilazione nel form controlla il captcha*/
-					$.post('captcha/php/checkCaptcha.php',
-					{code: $("#captcha-field").val()},function(ok){
-					//alert(ok);
-							if(ok.trim()=='true'){
-								alert("captcha correto");
-								/*submit form*/
-							}
-							if(ok.trim()=='false'){
-								alert("captcha errato");
-							}
-		
-					});
+					/*se non ci sono errori di compilazione nel form controlla il check sulla privacy*/
+					if($("#reg_ckprivacy").is(":not(:checked)")){
+						alert("Obbligatorio check privacy");
+					} else {
+					/*passato controllo privacy va al controllo captcha*/
+						$.post('captcha/php/checkCaptcha.php',
+						{code: $("#captcha-field").val()},function(ok){
+								if(ok.trim()=='true'){
+									alert("tutto ok");
+									//$("#reg_form").submit();
+								}
+								if(ok.trim()=='false'){
+									alert("captcha errato");
+								}
+			
+						});
+					}
 				}
 			});
 			$("#password_login").keydown(function( event ) {
@@ -257,17 +260,18 @@
                                     <p>Compila il form per poterti registrare al nostro portale</p>
                                 </header>
                                 <section>
-                                    <form id="reg_form" name="reg_form" method="post" action="">
+                                    <form id="reg_form" name="reg_form" method="post" action="registration.php">
                                         <label id="label-reg_nome">Nome: </label><input type="text" name="reg_nome" id="reg_nome" onKeyUp="makeUppercase(this);" placeholder="Nome"/>
                                         <label id="label-reg_cognome">Cognome: </label><input type="text" name="reg_cognome" id="reg_cognome" onKeyUp="makeUppercase(this);" placeholder="Cognome"/>
-                                        <label id="label-reg_mail">Email: </label><input type="text" name="reg_mail" id="reg_mail" onKeyUp="makeUppercase(this);" placeholder="Email"/>
+                                        <label id="label-reg_email">Email: </label><input type="text" name="reg_email" id="reg_email" onKeyUp="makeUppercase(this);" placeholder="Email"/>
                                         <label id="label-reg_cf">Codice Fiscale: </label><input type="text" name="reg_cf" id="reg_cf" onKeyUp="makeUppercase(this);" placeholder="Codice Fiscale"/>
                                         <label id="label-reg_telefono">Telefono: </label><input type="text" name="reg_tel" id="reg_tel" onKeyUp="makeUppercase(this);" placeholder="Telefono"/>
                                         <label id="label-reg_indirizzo">Indirizzo: </label><input type="text" name="reg_indirizzo" id="reg_indirizzo" onKeyUp="makeUppercase(this);" placeholder="Indirizzo"/>
                                         <label id="label-reg_citta">Citta: </label><input type="text" name="reg_citta" id="reg_citta" onKeyUp="makeUppercase(this);" placeholder="Citta"/>
                                         <label id="label-reg_cap">Cap: </label><input type="text" name="reg_cap" id="reg_cap" onKeyUp="makeUppercase(this);" placeholder="Cap">
                                         <img src="captcha/php/newCaptcha.php" alt="" id="captcha" /><img src="captcha/img/refresh.jpg" alt="aggiorna captcha" id="refresh-captcha" />
-                                        <label id="label-reg_captcha">Verifica Captcha:<input name="captcha-field" type="text" id="captcha-field" size="35" maxlength="5" value=""onKeyUp="makeUppercase(this);"/>
+                                        <label id="label-reg_captcha">Verifica Captcha:</label><input name="captcha-field" type="text" id="captcha-field" size="35" maxlength="5" value=""onKeyUp="makeUppercase(this);"/>
+                                        <label id="label-reg_ckprivacy">Acconsento al trattamento dei dati: </label><input type="checkbox" id="reg_ckprivacy" name="reg_ckprivacy" value="1" required/><a href="">Visualizza privacy</a>
                                         <input type="hidden" id="reg_idCitta" name="reg_idCitta" value=""/>
                                         <br>
                                         <input type="button" name="bt_avanti-reg_form" id="bt_avanti-reg_form" value="Registrati"/>                                            
