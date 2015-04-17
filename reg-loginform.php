@@ -17,11 +17,12 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
-        <link rel="stylesheet" href="captcha/css/bootstrap-responsive.min.css">
+        
+		<script src="jquery/jquery-1.11.2.js"></script>
+        <script src="jquery/jquery-ui-1.11.4/jquery-ui.js"></script>
+         <link rel="stylesheet" href="captcha/css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="captcha/css/main.css">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link rel="stylesheet" href="jquery/jquery-ui-1.11.4/jquery-ui.css">
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -31,7 +32,7 @@
         <script>
 		$(document).ready(function(){
 			$("#refresh-captcha").click(function(){
-			$("#captcha").attr("src","captcha/php/newCaptcha.php?rnd=" + Math.random());
+				$("#captcha").attr("src","captcha/php/newCaptcha.php?rnd=" + Math.random());
 			});
 			
 			/*CheckForm Registrazione*/
@@ -144,27 +145,35 @@
 		
 					});
 				}
-			});	
-				$( "#reg_citta" ).autocomplete({
-	    source: "searchComuni.php",
-	    minLength: 3,
-	    delay:200,
-	    focus: function( event, ui ) {
-	        $( "#reg_citta" ).val( ui.item.label );
-	        return false;
-	      },
-	    select: function( event, ui ) {
-	    	//console.debug(ui.item.value);
-	    	$("#reg_citta").val(ui.item.label);
-	    	$("#reg_idCitta").val(ui.item.value);
-	    	$("#reg_cap").val(ui.item.cap);
-	  		return false;
-	    }
-	  });
+			});
+			$("#password_login").keydown(function( event ) {
+				if( event.which == 13 ) {
+					$( "#conferma_login" ).trigger( "click" );
+				}
+			});
+			$("#conferma_login").click(function(){
+				$("#form_login").submit();
+			});				
+			$( "#reg_citta" ).autocomplete({
+				source: "searchComuni.php",
+				minLength: 3,
+				delay:200,
+				focus: function( event, ui ) {
+					$( "#reg_citta" ).val( ui.item.label );
+					return false;
+				  },
+				select: function( event, ui ) {
+					//console.debug(ui.item.value);
+					$("#reg_citta").val(ui.item.label);
+					$("#reg_idCitta").val(ui.item.value);
+					$("#reg_cap").val(ui.item.cap);
+					return false;
+				}
+			});
 
 	/**************************/		
-		});
-		/*scrivi in automati in maiuscolo nei campi*/
+		});/*chiusura ready function*/
+		/*scrive in automatico in maiuscolo nei campi*/
 		function makeUppercase(input) {
 			if ( event.which == 13 ) {
 				var inputs = $("#form").find(':focusable');
@@ -250,19 +259,19 @@
 									</header>
                                     <section>
                                     	<form id="reg_form" name="reg_form" method="post" action="">
-                                        	<label id="label-reg_nome">Nome: </label><input type="text" name="reg_nome" id="reg_nome" onKeyUp="makeUppercase(this);" placeholder="Nome">
-                                            <label id="label-reg_cognome">Cognome: </label><input type="text" name="reg_cognome" id="reg_cognome" onKeyUp="makeUppercase(this);" placeholder="Cognome">
-                                        	<label id="label-reg_mail">Email: </label><input type="text" name="reg_mail" id="reg_mail" onKeyUp="makeUppercase(this);" placeholder="Email">
-                                            <label id="label-reg_cf">Codice Fiscale: </label><input type="text" name="reg_cf" id="reg_cf" onKeyUp="makeUppercase(this);" placeholder="Codice Fiscale">
-                                            <label id="label-reg_telefono">Telefono: </label><input type="text" name="reg_tel" id="reg_tel" onKeyUp="makeUppercase(this);" placeholder="Telefono">
-                                            <label id="label-reg_indirizzo">Indirizzo: </label><input type="text" name="reg_indirizzo" id="reg_indirizzo" onKeyUp="makeUppercase(this);" placeholder="Indirizzo">
-                                        	<label id="label-reg_citta">Citta: </label><input type="text" name="reg_citta" id="reg_citta" onKeyUp="makeUppercase(this);" placeholder="Citta">
+                                        	<label id="label-reg_nome">Nome: </label><input type="text" name="reg_nome" id="reg_nome" onKeyUp="makeUppercase(this);" placeholder="Nome"/>
+                                            <label id="label-reg_cognome">Cognome: </label><input type="text" name="reg_cognome" id="reg_cognome" onKeyUp="makeUppercase(this);" placeholder="Cognome"/>
+                                        	<label id="label-reg_mail">Email: </label><input type="text" name="reg_mail" id="reg_mail" onKeyUp="makeUppercase(this);" placeholder="Email"/>
+                                            <label id="label-reg_cf">Codice Fiscale: </label><input type="text" name="reg_cf" id="reg_cf" onKeyUp="makeUppercase(this);" placeholder="Codice Fiscale"/>
+                                            <label id="label-reg_telefono">Telefono: </label><input type="text" name="reg_tel" id="reg_tel" onKeyUp="makeUppercase(this);" placeholder="Telefono"/>
+                                            <label id="label-reg_indirizzo">Indirizzo: </label><input type="text" name="reg_indirizzo" id="reg_indirizzo" onKeyUp="makeUppercase(this);" placeholder="Indirizzo"/>
+                                        	<label id="label-reg_citta">Citta: </label><input type="text" name="reg_citta" id="reg_citta" onKeyUp="makeUppercase(this);" placeholder="Citta"/>
                                             <label id="label-reg_cap">Cap: </label><input type="text" name="reg_cap" id="reg_cap" onKeyUp="makeUppercase(this);" placeholder="Cap">
                                             <img src="captcha/php/newCaptcha.php" alt="" id="captcha" /><img src="captcha/img/refresh.jpg" alt="aggiorna captcha" id="refresh-captcha" />
-											<label id="label-reg_captcha">Verifica Captcha:<input name="captcha-field" type="text" id="captcha-field" size="35" maxlength="5" value=""onKeyUp="makeUppercase(this);">
-                                            <input type="hidden" id="reg_idCitta" name="reg_idCitta" value="" />
+											<label id="label-reg_captcha">Verifica Captcha:<input name="captcha-field" type="text" id="captcha-field" size="35" maxlength="5" value=""onKeyUp="makeUppercase(this);"/>
+                                            <input type="hidden" id="reg_idCitta" name="reg_idCitta" value=""/>
                                             <br>
-                                            <input type="button" name="bt_avanti-reg_form" id="bt_avanti-reg_form" value="Registrati">                                            
+                                            <input type="button" name="bt_avanti-reg_form" id="bt_avanti-reg_form" value="Registrati"/>                                            
                                         </form>
                                     </section>
 								</article>
@@ -278,11 +287,11 @@
 									</header>
 									<p>
                                     	<form name="form_login" id="form_login" method="post" action="">
-	                                    	<input type="text" name="user_login" id="user_login" placeholder="Nome Utente"><br>
-	                                    	<input type="password" name="password_login" id="password_login" placeholder="Password">
+	                                    	<input type="text" name="user_login" id="user_login" placeholder="Nome Utente"/><br>
+	                                    	<input type="password" name="password_login" id="password_login" placeholder="Password"/>
                                     </p>
 									<footer>
-	                                        <input type="button" name="conferma_login" id="conferma_login" value="Login">
+	                                        <input type="button" name="conferma_login" id="conferma_login" value="Login"/>
                                         </form>
 
 									</footer>
