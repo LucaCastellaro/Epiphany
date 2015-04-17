@@ -4,10 +4,18 @@
 						<div class="8u">
 							<section>
 								<header>
-									<h2>Blandit nisl adipiscing</h2>
+									<h2>Categorie</h2>
 								</header>
-								<ul class="categories">
-									<li>
+                                <?php
+									$f=fopen("categorie.txt","r");
+									$r2=0;
+										while($riga=fgets($f)){
+											do $r=rand(1,5); while($r==$r2);
+											echo "<span id=\"categ".$r."\">".$riga."</span>";
+											$r2=$r;
+										}
+								?>
+								<!--	<li>
 										<span class="categ">Jan <strong>12</strong></span>
 									</li>
 									<li>
@@ -21,8 +29,7 @@
 									</li>
 									<li>
 										<span class="categ">Jan <strong>10</strong></span>
-									</li>
-								</ul>
+									</li>-->
 							</section>
 						</div>
 						<div class="4u">

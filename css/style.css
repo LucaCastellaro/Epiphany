@@ -879,36 +879,38 @@ ul.categories
 				ul.categories li
 				{
 					position: relative;
-					border-top: solid 1px #ddd;
-					padding: 0;
 					display:inline;
 				}
 
-				ul.categories .categ
+				#categ1,#categ2,#categ3,#categ4,#categ5
 				{
-					display: block;
-					position: absolute;
-					left: 0;
-					top: 1.3em;
-					background-color: #d52349;
-					height: 3.5em;
+					margin-bottom:20em;
 					text-align: center;
 					color: #fff;
-					line-height: 1em;
-					border-top-left-radius: 5px;
-					border-bottom-left-radius: 5px;
-					padding: 0.5em 0.75em 0 1em;
+					padding: 0.5em;
+					margin-right:0.1em;
 				}
-
-					ul.categories .categ:after
+				#categ1{
+					background-color: #DF1A2E;
+				}
+				#categ2{
+					background-color: #3F51B5;
+				}
+				#categ3{
+					background-color: #FF9800;
+				}
+				#categ4{
+					background-color: #4CAF50; 
+				}
+				#categ5{
+					background-color: #03A9F4;
+				}
+				ul.categories .categ:after
 					{
 						content: '';
 						position: absolute;
 						bottom: 0;
 						right: -1.2em;
-						border-left: solid 1.25em #d52349;
-						border-top: solid 1.8em transparent;
-						border-bottom: solid 1.8em transparent;
 					}
 				
 					ul.categories .categ strong

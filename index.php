@@ -44,7 +44,7 @@
                                         	$f=fopen("categorie.txt","r");
 												while($riga=fgets($f))
 												{
-													echo "<li><a href=\"#\">".$riga."</a></li>";
+													echo "<li><a href=\"\">".$riga."</a></li>";
 												}
 												?>
 										<!--li><a href="#">Lorem ipsum dolor</a></li>
@@ -63,7 +63,7 @@
 										<li><a href="#">Veroeros feugiat</a></li-->
 									</ul>
 								</li>
-							<li><a href="left-sidebar.html">Esplora</a></li>
+							<li><a href="">Esplora</a></li>
 <!--li id="li-cerca"><a href=""><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea"> <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"></a></li-->
 <!--                                                      		<li><a href="right-sidebar.html">Crea</a></li>				
 							
