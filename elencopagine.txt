@@ -1,0 +1,21 @@
+Elenco pagine da fare
+index.php
+reg-loginform.php			pagina con i due form di registrazione
+login.php				pagina che fa la login
+registration.php			registra l'utente sul db e invia la mail di conferma
+userActivation.php			attiva l'utente e invia i dati di accesso (userid e password)
+recoverdata.php				invia una mail all'utente con i dati di accesso
+logout.php				fa il logout
+searchComuni.php			legger i dati delle citta dal db per l'autocompletamento
+insertIdea-form.php			pagina con il fomr di inserimento
+insertIdea.php				inserisce l'idea nel db
+info.php				informazioni su epiphany
+faq.php					FAQ
+contact.php				gestisce l'ivio della mail dal form "Informazioni" del footer
+connection.php				connessione al db
+user.class.php				classe utente -> crea oggetto utente
+idea.class.php				classse idea -> crea l'oogetto idea
+!IMPORTANTE: con le classi è più facile gestire i dati di utente e idea perchè sono raggruppati in un unico oggetto in sessione :)
+
+al momento mi vengono i mente queste
+-servirà poi forse una pagina in cui raggruppare le query

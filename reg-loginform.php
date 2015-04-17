@@ -223,7 +223,7 @@
 										<li><a href="#">Veroeros feugiat</a></li-->
 									</ul>
 								</li>
-							<li><a href="left-sidebar.html">Esplora</a></li>
+							<li><a href="">Esplora</a></li>
 <!--li id="li-cerca"><a href=""><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea"> <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"></a></li-->
 <!--                                                      		<li><a href="right-sidebar.html">Crea</a></li>				
 							
@@ -249,37 +249,36 @@
 				<div class="container">
 					<div class="row">
 						<div class="8u">
-							
 							<!-- Content -->
-								<article class="box post">
-									<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-									<header>
-										<h2>Registrati</h2>
-										<p>Compila il form per poterti registrare al nostro portale</p>
-									</header>
-                                    <section>
-                                    	<form id="reg_form" name="reg_form" method="post" action="">
-                                        	<label id="label-reg_nome">Nome: </label><input type="text" name="reg_nome" id="reg_nome" onKeyUp="makeUppercase(this);" placeholder="Nome"/>
-                                            <label id="label-reg_cognome">Cognome: </label><input type="text" name="reg_cognome" id="reg_cognome" onKeyUp="makeUppercase(this);" placeholder="Cognome"/>
-                                        	<label id="label-reg_mail">Email: </label><input type="text" name="reg_mail" id="reg_mail" onKeyUp="makeUppercase(this);" placeholder="Email"/>
-                                            <label id="label-reg_cf">Codice Fiscale: </label><input type="text" name="reg_cf" id="reg_cf" onKeyUp="makeUppercase(this);" placeholder="Codice Fiscale"/>
-                                            <label id="label-reg_telefono">Telefono: </label><input type="text" name="reg_tel" id="reg_tel" onKeyUp="makeUppercase(this);" placeholder="Telefono"/>
-                                            <label id="label-reg_indirizzo">Indirizzo: </label><input type="text" name="reg_indirizzo" id="reg_indirizzo" onKeyUp="makeUppercase(this);" placeholder="Indirizzo"/>
-                                        	<label id="label-reg_citta">Citta: </label><input type="text" name="reg_citta" id="reg_citta" onKeyUp="makeUppercase(this);" placeholder="Citta"/>
-                                            <label id="label-reg_cap">Cap: </label><input type="text" name="reg_cap" id="reg_cap" onKeyUp="makeUppercase(this);" placeholder="Cap">
-                                            <img src="captcha/php/newCaptcha.php" alt="" id="captcha" /><img src="captcha/img/refresh.jpg" alt="aggiorna captcha" id="refresh-captcha" />
-											<label id="label-reg_captcha">Verifica Captcha:<input name="captcha-field" type="text" id="captcha-field" size="35" maxlength="5" value=""onKeyUp="makeUppercase(this);"/>
-                                            <input type="hidden" id="reg_idCitta" name="reg_idCitta" value=""/>
-                                            <br>
-                                            <input type="button" name="bt_avanti-reg_form" id="bt_avanti-reg_form" value="Registrati"/>                                            
-                                        </form>
-                                    </section>
-								</article>
+                            <article class="box post">
+                                <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                                <header>
+                                    <h2>Registrati</h2>
+                                    <p>Compila il form per poterti registrare al nostro portale</p>
+                                </header>
+                                <section>
+                                    <form id="reg_form" name="reg_form" method="post" action="">
+                                        <label id="label-reg_nome">Nome: </label><input type="text" name="reg_nome" id="reg_nome" onKeyUp="makeUppercase(this);" placeholder="Nome"/>
+                                        <label id="label-reg_cognome">Cognome: </label><input type="text" name="reg_cognome" id="reg_cognome" onKeyUp="makeUppercase(this);" placeholder="Cognome"/>
+                                        <label id="label-reg_mail">Email: </label><input type="text" name="reg_mail" id="reg_mail" onKeyUp="makeUppercase(this);" placeholder="Email"/>
+                                        <label id="label-reg_cf">Codice Fiscale: </label><input type="text" name="reg_cf" id="reg_cf" onKeyUp="makeUppercase(this);" placeholder="Codice Fiscale"/>
+                                        <label id="label-reg_telefono">Telefono: </label><input type="text" name="reg_tel" id="reg_tel" onKeyUp="makeUppercase(this);" placeholder="Telefono"/>
+                                        <label id="label-reg_indirizzo">Indirizzo: </label><input type="text" name="reg_indirizzo" id="reg_indirizzo" onKeyUp="makeUppercase(this);" placeholder="Indirizzo"/>
+                                        <label id="label-reg_citta">Citta: </label><input type="text" name="reg_citta" id="reg_citta" onKeyUp="makeUppercase(this);" placeholder="Citta"/>
+                                        <label id="label-reg_cap">Cap: </label><input type="text" name="reg_cap" id="reg_cap" onKeyUp="makeUppercase(this);" placeholder="Cap">
+                                        <img src="captcha/php/newCaptcha.php" alt="" id="captcha" /><img src="captcha/img/refresh.jpg" alt="aggiorna captcha" id="refresh-captcha" />
+                                        <label id="label-reg_captcha">Verifica Captcha:<input name="captcha-field" type="text" id="captcha-field" size="35" maxlength="5" value=""onKeyUp="makeUppercase(this);"/>
+                                        <input type="hidden" id="reg_idCitta" name="reg_idCitta" value=""/>
+                                        <br>
+                                        <input type="button" name="bt_avanti-reg_form" id="bt_avanti-reg_form" value="Registrati"/>                                            
+                                    </form>
+                                </section>
+                            </article>
 
 						</div>
 						<div class="4u">
 						
-							<!-- Sidebar -->
+							<!-- Box Login-->
 								<section class="box">
 									<a href="#" class="image featured"><img src="images/pic09.jpg" alt="" /></a>
 									<header>
