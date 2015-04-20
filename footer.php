@@ -6,12 +6,13 @@
 								<header>
 									<h2>Categorie</h2>
 								</header>
+                                                            <ul id="categories">
                                 <?php
 									$f=fopen("categorie.txt","r");
 									$r2=0;
 										while($riga=fgets($f)){
 											do $r=rand(1,5); while($r==$r2);
-											echo "<span id=\"categ".$r."\">".$riga."</span>";
+											echo "<li><a href=\"\"><span class=\"categ".$r."\">".$riga."<br></span></a></li>";
 											$r2=$r;
 										}
 								?>
@@ -30,6 +31,7 @@
 									<li>
 										<span class="categ">Jan <strong>10</strong></span>
 									</li>-->
+                                                        </ul>
 							</section>
 						</div>
 						<div class="4u">
