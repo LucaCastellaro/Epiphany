@@ -887,27 +887,30 @@ ul#categories
                                     min-width: 15%;
                                 }
 
-				.categ1,.categ2,.categ3,.categ4,.categ5
+				.categ
 				{
 					margin-bottom:20em;
 					text-align: center;
 					color: #fff;
 					padding: 0.5em;
 					margin:0.15em;
+                                        	border-radius: 1em;
+                                                -webkit-border-radius: 1em;
+                                                -moz-border-radius: 1em;
 				}
-				.categ1{
+				.cat1{
 					background-color: #DF1A2E;
 				}
-				.categ2{
+				.cat2{
 					background-color: #3F51B5;
 				}
-				.categ3{
+				.cat3{
 					background-color: #FF9800;
 				}
-				.categ4{
+				.cat4{
 					background-color: #4CAF50; 
 				}
-				.categ5{
+				.cat5{
 					background-color: #03A9F4;
 				}
 				/*ul.categories .categ:after

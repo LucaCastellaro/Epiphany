@@ -12,7 +12,7 @@
 									$r2=0;
 										while($riga=fgets($f)){
 											do $r=rand(1,5); while($r==$r2);
-											echo "<li><a href=\"\"><span class=\"categ".$r."\">".$riga."<br></span></a></li>";
+											echo "<li><a href=\"\"><span class=\"categ cat".$r."\">".$riga."<br></span></a></li>";
 											$r2=$r;
 										}
 								?>
