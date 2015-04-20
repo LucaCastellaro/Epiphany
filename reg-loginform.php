@@ -17,9 +17,9 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
-        
-		<script src="jquery/jquery-1.11.2.js"></script>
+	<script src="jquery/jquery-1.11.2.js"></script>
         <script src="jquery/jquery-ui-1.11.4/jquery-ui.js"></script>
+
          <link rel="stylesheet" href="captcha/css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="captcha/css/main.css">
         <link rel="stylesheet" href="jquery/jquery-ui-1.11.4/jquery-ui.css">
@@ -139,7 +139,7 @@
 						{code: $("#captcha-field").val()},function(ok){
 								if(ok.trim()=='true'){
 									alert("tutto ok");
-									//$("#reg_form").submit();
+									$("#reg_form").submit();
 								}
 								if(ok.trim()=='false'){
 									alert("captcha errato");
@@ -173,6 +173,7 @@
 					return false;
 				}
 			});
+
 	/**************************/		
 		});/*chiusura ready function*/
 		/*scrive in automatico in maiuscolo nei campi*/
@@ -258,14 +259,14 @@
                                     <p>Compila il form per poterti registrare al nostro portale</p>
                                 </header>
                                 <section>
-                                    <form id="reg_form" name="reg_form" method="post" action="">
+                                    <form id="reg_form" name="reg_form" method="post" action="registration.php">
                                         <label id="label-reg_nome">Nome: </label><input type="text" name="reg_nome" id="reg_nome" onKeyUp="makeUppercase(this);" placeholder="Nome"/>
                                         <label id="label-reg_cognome">Cognome: </label><input type="text" name="reg_cognome" id="reg_cognome" onKeyUp="makeUppercase(this);" placeholder="Cognome"/>
                                         <label id="label-reg_mail">Email: </label><input type="text" name="reg_email" id="reg_email" onKeyUp="makeUppercase(this);" placeholder="Email"/>
                                         <label id="label-reg_cf">Codice Fiscale: </label><input type="text" name="reg_cf" id="reg_cf" onKeyUp="makeUppercase(this);" placeholder="Codice Fiscale"/>
                                         <label id="label-reg_telefono">Telefono: </label><input type="text" name="reg_tel" id="reg_tel" onKeyUp="makeUppercase(this);" placeholder="Telefono"/>
                                         <label id="label-reg_indirizzo">Indirizzo: </label><input type="text" name="reg_indirizzo" id="reg_indirizzo" onKeyUp="makeUppercase(this);" placeholder="Indirizzo"/>
-                                        <label id="label-reg_citta">Citta: </label><input type="text" name="reg_citta" id="reg_citta" onKeyUp="makeUppercase(this);" placeholder="Citta"/>
+                                        <label id="label-reg_citta">Citta: </label><input type="text" name="reg_citta" id="reg_citta" onKeyUp="makeUppercase(this);" value="" placeholder="Citta"/>
                                         <label id="label-reg_cap">Cap: </label><input type="text" name="reg_cap" id="reg_cap" onKeyUp="makeUppercase(this);" placeholder="Cap">
                                         <img src="captcha/php/newCaptcha.php" alt="" id="captcha" /><img src="captcha/img/refresh.jpg" alt="aggiorna captcha" id="refresh-captcha" />
                                         <label id="label-reg_captcha">Verifica Captcha:<input name="captcha-field" type="text" id="captcha-field" size="35" maxlength="5" value=""onKeyUp="makeUppercase(this);"/>

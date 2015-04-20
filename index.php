@@ -70,6 +70,13 @@
                             				COMMENTO IMPORTANTE: il pulsante "crea" pulsante facciamolo "vedere" solo se è già stato fatto il login (:
                                             
 -->                                                      	<li><a href="reg-loginform.php">Registrazione / Login</a></li>
+															<li><a href="">utente</a>
+                                                            	<ul>
+                                                                    <li><a href="#">Profilo Utente</a></li>
+                                                                    <li><a href="#">Modifica i dati</a></li>
+                                                                    <li><a href="#">Logout</a></li>
+                                                                </ul>
+                                                            </li>
                                                                
 							</ul>
 						</nav>

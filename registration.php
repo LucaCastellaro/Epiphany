@@ -1,4 +1,8 @@
 <?php
+$con=mysqli_connect("localhost","epiphany","epiphany","epiphany") or die("connection error");
+$result=mysqli_query($con,"select * from locations where citta='Novara'");
+$row=mysqli_fetch_array($result);
+echo $row['citta'];
 $nome=$_REQUEST['reg_nome'];
 $cognome=$_REQUEST['reg_cognome'];
 $email=$_REQUEST['reg_email'];
