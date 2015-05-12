@@ -34,17 +34,13 @@ $qry = 	"SELECT ".
 "20";
 //echo $qry;
 
-mysqli_set_charset($con, 'utf8');
-if (mysqli_connect_errno()) {
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-$result = mysqli_query($con,$qry);
+
+$result = mysql_query($qry);
 $list = array();
 $count=0;
-while($row = mysqli_fetch_array($result)) {
+while($row = mysql_fetch_array($result)) {
 	$list[$count]=new Comune($row['id'], $row['result'], $row['cap']);
 	$count++;
 }
 $jsonList = json_encode($list);
 echo ($jsonList);
-mysqli_close($con);

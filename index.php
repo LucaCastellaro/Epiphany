@@ -1,3 +1,11 @@
+<?php
+require_once('connection.php');
+require_once('user.class.php');
+session_start();
+$login=$_SESSION['login'];
+if($login==true)
+	$utente=$_SESSION['utente'];
+?>
 <!DOCTYPE HTML>
 <!--
 	Dopetrope by HTML5 UP
@@ -7,7 +15,7 @@
 <html>
 	<head>
 		<title>Epiphany</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta charset="utf-8" />
         <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'> <!--Font per il logo Epiphany-->
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -41,11 +49,18 @@
 									<a href="">Categorie</a>
 									<ul>
                                     	<?php
+											$qry="select * from categorie";
+											$result=mysql_query($qry);
+											while($row=mysql_fetch_array($result))
+											{
+												echo "<li><a href=\"\">".$row['nome']."</a></li>";
+											}
+											/*
                                         	$f=fopen("categorie.txt","r");
 												while($riga=fgets($f))
 												{
 													echo "<li><a href=\"\">".$riga."</a></li>";
-												}
+												}*/
 												?>
 										<!--li><a href="#">Lorem ipsum dolor</a></li>
 										<li><a href="#">Magna phasellus</a></li>
@@ -64,27 +79,30 @@
 									</ul>
 								</li>
 							<li><a href="">Esplora</a></li>
-<!--li id="li-cerca"><a href=""><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea"> <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"></a></li-->
-<!--                                                      		<li><a href="right-sidebar.html">Crea</a></li>				
-							
-                            				COMMENTO IMPORTANTE: il pulsante "crea" pulsante facciamolo "vedere" solo se è già stato fatto il login (:
-                                            
--->                                                      	<li><a href="reg-loginform.php">Registrazione / Login</a></li>
-															<li><a href="">utente</a>
-                                                            	<ul>
-                                                                    <li><a href="#">Profilo Utente</a></li>
-                                                                    <li><a href="#">Modifica i dati</a></li>
-                                                                    <li><a href="#">Logout</a></li>
-                                                                </ul>
-                                                            </li>
-                                                               
+                                                                                                             	
+							<?php
+                                if($login==false)
+                                    echo"<li><a href=\"reg-loginform.php\">Registrazione / Login</a></li>";
+                                else
+                                    echo"<li><a href=\"right-sidebar.html\">Crea</a></li>
+                                    <li><a href=\"\"><i class=\"fa fa-user fa-fw\"></i>".$utente->nome." ".$utente->cognome." <i class=\"fa fa-caret-down fa-fw\"></i></a>
+                                    <ul>
+                                        <li><a href=\"#\"><i class=\"fa fa-user fa-fw\"></i> Profilo Utente</a></li>
+                                        <li><a href=\"#\"><i class=\"fa fa-edit fa-fw\"></i> Modifica i dati</a></li>
+                                        <li><a href=\"logout.php\"><i class=\"fa fa-sign-out fa-fw\"></i> Logout</a></li>
+                                    </ul>
+                                </li>";
+                            ?>
+                                                            
+                                                            
 							</ul>
 						</nav>
                         <!---->
                         <section>
 							<header>
-								<div id="box-cerca"><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea">
-                                <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca">
+								<div id="box-cerca">
+                                	<input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea">
+                                    <!--input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"--><button class="search-button button" id="bt_cerca"><i class="fa fa-search fa-fw"></i> Cerca</button>
                                 </div>
 							</header>
 						</section>
@@ -101,7 +119,7 @@
 								<div class="4u">
 									<section class="first">
 										<!--i class="icon featured fa-cog"></i-->
-                                                                                <i class="icon featured"><img src="images/idea-b80x80.png"></i>
+                                            <i class="icon featured fa-lightbulb-o"></i>
 										<header>
 											<h2>Hai un Idea?</h2>
 										</header>
@@ -111,7 +129,7 @@
 								<div class="4u">
 									<section class="middle">
 										<!--i class="icon featured alt fa-flash"></i-->
-                                                                                <i class="icon featured alt"><img src="images/ingranaggi-b80x80.png"></i>
+                                            <i class="icon featured alt fa-gear"></i>
 										<header>
 											<h2>Elabora la tua Idea</h2>
 										</header>
@@ -120,7 +138,7 @@
 								</div>
 								<div class="4u">
 									<section class="last">
-                                                                            <i class="icon featured alt2 idea"><img src="images/binocolo-b80x80.png"></i>
+                                            <i class="icon featured alt2 fa-search"></i>
 										<header>
 											<h2>Cerca un Idea</h2>
 										</header>
@@ -145,106 +163,40 @@
 					<div class="row">
 						<div class="12u">
 							
-							<!-- Portfolio -->
+							<!-- Progetti attivi -->
 								<section>
 									<header class="major">
 										<h2>Progetti Attivi</h2>
 									</header>
-                                                                    <?php
-                                                                                    $f=fopen("elencoarticoli.txt","r");
-                                                                                    $i=0;
-                                                                                    while($riga=fgets($f))
-                                                                                    {    
-                                                                                        if($i==0)
-                                                                                            echo "<div class=\"row\">";
-                                                                                        $parti=explode("|",$riga); 
-                                                                                        echo"<div class=\"4u\">
-											<section class=\"box\">
-												<a href=\"#\" class=\"image featured\"><img src=\"images/pic04.jpg\" alt=\"\" /></a>
-												<header>
-													<h3>".$parti[0]."</h3>
-												</header>
-												<p>".$parti[1]."</p>
-												<footer>
-													<a href=\"#\" class=\"button alt\">Find out more</a>
-												</footer>
-											</section>
-										</div>"; 
-                                                                                        if($i==2)
-                                                                                        {
-                                                                                            echo "</div>";
-                                                                                            $i=0;
-                                                                                        }else
-                                                                                            $i++;
-                                                                                    }
-                                                                                ?>
-                                                                       
-									<!--div class="row">
-										<div class="4u">
-											<section class="box">
-												<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-												<header>
-													<h3>Ipsum feugiat et dolor</h3>
-												</header>
-												<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-												<footer>
-													<a href="#" class="button alt">Find out more</a>
-												</footer>
-											</section>
-										</div>
-										<div class="4u">
-											<section class="box">
-												<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-												<header>
-													<h3>Sed etiam lorem nulla</h3>
-												</header>
-												<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-												<footer>
-													<a href="#" class="button alt">Find out more</a>
-												</footer>
-											</section>
-										</div>
-                                                                                
-										
-									</div>
-									<div class="row">
-										<div class="4u">
-											<section class="box">
-												<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-												<header>
-													<h3>Blandit sed adipiscing</h3>
-												</header>
-												<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-												<footer>
-													<a href="#" class="button alt">Find out more</a>
-												</footer>
-											</section>
-										</div>
-										<div class="4u">
-											<section class="box">
-												<a href="#" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
-												<header>
-													<h3>Etiam nisl consequat</h3>
-												</header>
-												<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-												<footer>
-													<a href="#" class="button alt">Find out more</a>
-												</footer>
-											</section>
-										</div>
-										<div class="4u">
-											<section class="box">
-												<a href="#" class="image featured"><img src="images/pic07.jpg" alt="" /></a>
-												<header>
-													<h3>Dolore nisl feugiat</h3>
-												</header>
-												<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-												<footer>
-													<a href="#" class="button alt">Find out more</a>
-												</footer>
-											</section>
-										</div>
-									</div-->
+									<?php
+									
+                                    $f=fopen("elencoarticoli.txt","r");
+                                    $i=0;
+                                    while($riga=fgets($f))
+                                    {    
+                                        if($i==0)
+                                            echo "<div class=\"row\">";
+                                        $parti=explode("|",$riga); 
+                                        echo"<div class=\"4u\">
+                                                <section class=\"box\">
+                                                    <a href=\"#\" class=\"image featured\"><img src=\"images/pic04.jpg\" alt=\"\" /></a>
+                                                    <header>
+                                                        <h3>".$parti[0]."</h3>
+                                                    </header>
+                                                    <p>".$parti[1]."</p>
+                                                    <footer>
+                                                        <a href=\"#\" class=\"button alt\">Find out more</a>
+                                                    </footer>
+                                                </section>
+                                            </div>"; 
+                                        if($i==2)
+                                        {
+                                            echo "</div>";
+                                            $i=0;
+                                        }else
+                                            $i++;
+                                    }
+                                    ?>
 								</section>
 
 						</div>

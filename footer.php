@@ -3,35 +3,25 @@
 					<div class="row">
 						<div class="8u">
 							<section>
-								<header>
-									<h2>Categorie</h2>
-								</header>
-                                                            <ul id="categories">
-                                <?php
-									$f=fopen("categorie.txt","r");
-									$r2=0;
-										while($riga=fgets($f)){
-											do $r=rand(1,5); while($r==$r2);
-											echo "<li><a href=\"\"><span class=\"categ cat".$r."\">".$riga."<br></span></a></li>";
-											$r2=$r;
-										}
-								?>
-								<!--	<li>
-										<span class="categ">Jan <strong>12</strong></span>
-									</li>
-									<li>
-										<span class="categ">Jan <strong>12</strong></span>
-									</li>
-									<li>
-										<span class="categ">Jan <strong>15</strong></span>
-									</li>
-									<li>
-										<span class="categ">Jan <strong>12</strong></span>
-									</li>
-									<li>
-										<span class="categ">Jan <strong>10</strong></span>
-									</li>-->
-                                                        </ul>
+                                <header>
+                                	<h2>Categorie</h2>
+                                </header>
+                                <ul id="categories">
+                                    <?php
+									require_once('connection.php');
+                                    $sql="select * from categorie" or die("err");
+                                    $res=mysql_query($sql);
+                                    while($cat=mysql_fetch_array($res)){
+                                    //$f=fopen("categorie.txt","r");
+                                    //$r2=0;
+                                    //while($riga=fgets($f)){
+                                        do $r=rand(1,5);
+                                        while($r==$r2);
+                                        echo "<li><a href=\"\"><span class=\"categ cat".$r."\">".$cat['nome']."<br></span></a></li>";
+                                        $r2=$r;
+                                    }
+                                    ?>
+                                </ul>
 							</section>
 						</div>
 						<div class="4u">
@@ -85,7 +75,7 @@
 						<div class="4u">
 							<section>
 								<header>
-									<h2>Vitae tempor lorem</h2>
+									<h2>Contattaci</h2>
 								</header>
 								<ul class="social">
 									<li><a class="icon fa-facebook" href="#"><span class="label">Facebook</span></a></li>
@@ -98,7 +88,7 @@
 									<li>
 										<h3>Mail</h3>
 										<p>
-                                                                                    <input type="text" name="contact-mail" id="contact-mail" placeholder="Mail">									
+                                            <input type="text" name="contact-email" id="contact-email" placeholder="Mail" >									
 										</p>
 									</li>
 									<li>
@@ -107,10 +97,10 @@
 									</li>
 									<li>
 										<h3>Messaggio</h3>
-                                                                                <p><textarea name="contact-msg" id="contact-msg" rows="6"></textarea></p>
+                                        <p><textarea name="contact-msg" id="contact-msg" rows="6" placeholder="Messaggio.."></textarea></p>
 									</li>
-                                                                        <li>
-                                                                            <p><input type="button" name="bt_contact" id="bt_contact" value="Invia"></p>
+                                    <li>
+                                        <p><input type="button" name="bt_contact" id="bt_contact" value="Invia"></p>
 									</li>
 								</ul>
 							</section>
@@ -122,7 +112,7 @@
 							<!-- Copyright -->
 								<div id="copyright">
 									<ul class="links">
-										<li>&copy; 2015 - Epiphany. All rights reserved.</li><li>Powered by <a href="lucacastellaro.altervista.org">Luca Castellaro</a>, <a href="#">Matteo Bosi</a></li>
+										<li>&copy; 2015 - Epiphany. All rights reserved.</li><li>Powered by <a href="//lucacastellaro.altervista.org" target="_blank">Luca Castellaro</a>, <a href="//matteobosi.altervista.org" target="_blank">Matteo Bosi</a></li>
 									</ul>
 								</div>
 

@@ -1,3 +1,11 @@
+<?php
+require_once('connection.php');
+session_start();
+$login=$_SESSION['login'];
+if($login==true)
+	header('Location: index.php');
+?>
+
 <!DOCTYPE HTML>
 <!--
 	Dopetrope by HTML5 UP
@@ -138,7 +146,7 @@
 						$.post('captcha/php/checkCaptcha.php',
 						{code: $("#captcha-field").val()},function(ok){
 								if(ok.trim()=='true'){
-									alert("tutto ok");
+									//alert("tutto ok");
 									$("#reg_form").submit();
 								}
 								if(ok.trim()=='false'){
@@ -203,11 +211,18 @@
 									<a href="">Categorie</a>
 									<ul>
                                     	<?php
+											$qry="select * from categorie";
+											$result=mysql_query($qry);
+											while($row=mysql_fetch_array($result))
+											{
+												echo "<li><a href=\"\">".$row['nome']."</a></li>";
+											}
+											/*
                                         	$f=fopen("categorie.txt","r");
 												while($riga=fgets($f))
 												{
-													echo "<li><a href=\"#\">".$riga."</a></li>";
-												}
+													echo "<li><a href=\"\">".$riga."</a></li>";
+												}*/
 												?>
 										<!--li><a href="#">Lorem ipsum dolor</a></li>
 										<li><a href="#">Magna phasellus</a></li>
@@ -226,13 +241,7 @@
 									</ul>
 								</li>
 							<li><a href="">Esplora</a></li>
-<!--li id="li-cerca"><a href=""><input type="text" name="cerca" id="cerca" placeholder="Cerca un'idea"> <input type="button" name="bt_cerca" id="bt_cerca" value="Cerca"></a></li-->
-<!--                                                      		<li><a href="right-sidebar.html">Crea</a></li>				
-							
-                            				COMMENTO IMPORTANTE: il pulsante "crea" pulsante facciamolo "vedere" solo se è già stato fatto il login (:
-                                            
--->                                                      	<li class="current"><a href="">Registrazione / Login</a></li>
-                                                               
+								<li class="current"><a href="">Registrazione / Login</a></li>                               
 							</ul>
 						</nav>
                          <section>
@@ -263,7 +272,7 @@
                                         <label id="label-reg_nome">Nome: </label><input type="text" name="reg_nome" id="reg_nome" onKeyUp="makeUppercase(this);" placeholder="Nome"/>
                                         <label id="label-reg_cognome">Cognome: </label><input type="text" name="reg_cognome" id="reg_cognome" onKeyUp="makeUppercase(this);" placeholder="Cognome"/>
                                         <label id="label-reg_mail">Email: </label><input type="text" name="reg_email" id="reg_email" onKeyUp="makeUppercase(this);" placeholder="Email"/>
-                                        <label id="label-reg_cf">Codice Fiscale: </label><input type="text" name="reg_cf" id="reg_cf" onKeyUp="makeUppercase(this);" placeholder="Codice Fiscale"/>
+                                        <label id="label-reg_cf">Codice Fiscale: </label><input type="text" name="reg_cf" id="reg_cf" onKeyUp="makeUppercase(this);" placeholder="Codice Fiscale" maxlength="16"/>
                                         <label id="label-reg_telefono">Telefono: </label><input type="text" name="reg_tel" id="reg_tel" onKeyUp="makeUppercase(this);" placeholder="Telefono"/>
                                         <label id="label-reg_indirizzo">Indirizzo: </label><input type="text" name="reg_indirizzo" id="reg_indirizzo" onKeyUp="makeUppercase(this);" placeholder="Indirizzo"/>
                                         <label id="label-reg_citta">Citta: </label><input type="text" name="reg_citta" id="reg_citta" onKeyUp="makeUppercase(this);" value="" placeholder="Citta"/>
@@ -287,13 +296,14 @@
 									<header>
 										<h3>Login</h3>
 									</header>
-									<p>
-                                    	<form name="form_login" id="form_login" method="post" action="">
+									
+                                    	<form name="form_login" id="form_login" method="post" action="login.php">
 	                                    	<input type="text" name="user_login" id="user_login" placeholder="Nome Utente"/><br>
 	                                    	<input type="password" name="password_login" id="password_login" placeholder="Password"/>
-                                    </p>
+                                    
 									<footer>
-	                                        <input type="button" name="conferma_login" id="conferma_login" value="Login"/>
+	                                        <!--input type="button" name="conferma_login" id="conferma_login" value="Login"/-->
+                                                <button class="search-button button" name="conferma_login" id="conferma_login"><i class="fa fa-sign-in fa-fw"></i> Login</button>
                                         </form>
 
 									</footer>

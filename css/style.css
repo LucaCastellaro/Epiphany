@@ -40,6 +40,8 @@ color:red;
 		font-weight: 300;
 		color: #5d5d5d;
 	}
+	textarea{resize:none}
+	
 	#box-cerca input[type="text"]{
 		border:none;
 		border-bottom: 1px solid #d52349;
@@ -51,6 +53,16 @@ color:red;
 	#box-cerca{
 		padding-top:1em;
 	}
+	#contact-email,#contact-name,#contact-msg
+	{
+		border-radius:0.5em;
+		-moz-border-radius:0.5em;
+		-webkit-border-radius:0.5em;
+		border:0;
+		width:100%;
+		padding:0.2em;
+	}
+	#bt_contact{width:100%;}
 	strong, b
 	{
 		color: #252122;
@@ -317,7 +329,13 @@ color:red;
 			}
 
 	/* Button */
-		
+		.search-button{
+                        width: 7.6em;
+                        height: 2.2em;
+                        padding: 0;
+                        margin: 0;
+			border: 0;                
+                }
 		input[type="button"],
 		input[type="submit"],
 		input[type="reset"],
@@ -737,7 +755,8 @@ color:red;
 				font-style: normal;
 				margin: 0;
 			}
-
+			
+			
 /*********************************************************************************/
 /* Wrappers                                                                      */
 /*********************************************************************************/
@@ -889,14 +908,13 @@ ul#categories
 
 				.categ
 				{
-					margin-bottom:20em;
 					text-align: center;
-					color: #fff;
+					color: #FFFFFF;
 					padding: 0.5em;
-					margin:0.15em;
-                                        	border-radius: 1em;
-                                                -webkit-border-radius: 1em;
-                                                -moz-border-radius: 1em;
+					margin:0.1em;
+					border-radius: 0.5em;
+					-webkit-border-radius: 0.5em;
+					-moz-border-radius: 0.5em;
 				}
 				.cat1{
 					background-color: #DF1A2E;
